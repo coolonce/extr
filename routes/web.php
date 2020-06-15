@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    // dd(Auth::->user());
+    if(Auth::check()){
+        return view('welcome');
+    }else{
+        // dd(Auth::check());
+        return redirect('/login');
+    }
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/extragent', 'ExtragentController@index')->name('extragent');
+Route::get('/characts', 'CharactController@index')->name('characts');
+Route::get('/passport', 'PassportController@index')->name('passport');
+Route::get('/coolant', 'CoolantController@index')->name('coolant');
+Route::get('/detail', 'DetailController@index')->name('detail');
+
+
+

@@ -19,79 +19,51 @@ class DetailController extends Controller
     {
         return response()->json(["data" => Detail::all()]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function update(Request $request, Detail $exr)
+    {
+        $data = $request->all();
+
+        try {
+            $exr->name = $data['name'];
+            $exr->type_id = $data['type_id'];
+            $exr->link = $data['link'];
+            $exr->thin_section = $data['thin_section'];
+            $exr->diameter = $data['diameter']?? null;
+            $exr->volume = $data['volume'] ?? null;
+            $exr->save();
+            return response()->json(["msg"=>"good"]);
+        } catch (\Throwable $th) {
+            return response()->json(["msg"=>"Произошла ошибка при сохранении"], 500);
+        }
+    }
+
+    public function create(Request $request)
+    {
+        $data = $request->all();
+
+        try {
+            $exr = new Detail();
+            $exr->name = $data['name'];
+            $exr->type_id = $data['type_id'];
+            $exr->link = $data['link'];
+            $exr->thin_section = $data['thin_section'];
+            $exr->diameter = $data['diameter']?? null;
+            $exr->volume = $data['volume'] ?? null;
+            $exr->save();
+            return response()->json(["msg"=>"good"]);
+        } catch (\Throwable $th) {
+            return response()->json(["msg"=>"Произошла ошибка при сохранении"], 500);
+        }
+    }
+
+    public function delete(Request $request, Detail $exr)
+    {
+        $exr->delete();
+    }
+
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Detail  $detail
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Detail $detail)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Detail  $detail
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Detail $detail)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Detail  $detail
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Detail $detail)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Detail  $detail
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Detail $detail)
-    {
-        //
+        return view('detail');
     }
 }
