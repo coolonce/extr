@@ -17,10 +17,10 @@ class CreateDetails extends Migration
             $table->id();
             $table->string('name', 50);
             $table->bigInteger('type_id')->unsigned();
-            $table->string('link');
+            $table->string('link')->nullable(true);
             $table->string('thin_section');
-            $table->float('diameter')->nullable();
-            $table->float('volume')->nullable();
+            $table->float('diameter')->nullable(true);
+            $table->string('volume')->nullable(true);
             $table->timestamps();
         });
     }

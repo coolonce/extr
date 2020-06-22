@@ -102,7 +102,7 @@ export default {
             axios.post(`/api/extractor/${this.extractor.id}/edit/`, this.extractor)
                 .then(resp =>{
                     console.log(resp);
-                    alert("Экстрагент изменен!")
+                    alert("Экстракор изменен!")
                 },
                 err => {
                     alert(err.data.msg);
@@ -124,7 +124,7 @@ export default {
                 .then(
                 (resp) =>{
                     console.log(resp);
-                    alert("Экстрагент добавлен!");
+                    alert("Экстракор добавлен!");
                     this.getData();
                     this.showTable = true;
                     this.createObj = false;
@@ -143,7 +143,7 @@ export default {
                 .then(
                 (resp) =>{
                     console.log(resp);
-                    alert("Экстрагент удален!");
+                    alert("Экстракор удален!");
                     this.getData();
                     this.showTable = true;
                     this.createObj = false;

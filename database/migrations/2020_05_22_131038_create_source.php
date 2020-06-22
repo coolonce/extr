@@ -15,11 +15,11 @@ class CreateSource extends Migration
     {
         Schema::create('source', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 75);
+            $table->string('name', 60);
             $table->float('percents');
             $table->float('mass');
-            $table->float('average_radius');
-            $table->float('layer_porosity');
+            $table->float('average_radius')->nullable(true);
+            $table->float('layer_porosity')->nullable(true);
             $table->timestamps();
         });
     }

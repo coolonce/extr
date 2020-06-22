@@ -45,7 +45,7 @@
                             </b-form-group>
 
                             <b-form-group id="input-group-2" label="Ссылка:" label-for="input-2">
-                                <b-form-input id="input-2"  name="Ссылка" data-vv-name="Ссылка" v-model="detail.link" required></b-form-input>
+                                <b-form-input id="input-2"  name="Ссылка" data-vv-name="Ссылка" v-model="detail.link"></b-form-input>
                             </b-form-group>
                             <b-form-group id="input-group-2" label="Шлиф:" label-for="input-2">
                                 <b-form-input id="input-2"  name="Шлиф" data-vv-name="Шлиф" v-model="detail.thin_section" required></b-form-input>
