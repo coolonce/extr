@@ -7,87 +7,51 @@ use Illuminate\Http\Request;
 
 class HeaterController extends Controller
 {
-
-
     public function get(Request $request)
     {
         return response()->json(["data" => Heater::all()]);
     }
 
+    public function update(Request $request, Heater $exr)
+    {
+        $data = $request->all();
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        try {
+            $exr->type = $data['type'];
+            $exr->power = $data['power'];
+            $exr->effective_heating_area = $data['effective_heating_area'];
+            $exr->efficiency = $data['efficiency'];
+            $exr->save();
+            return response()->json(["msg"=>"good"]);
+        } catch (\Throwable $th) {
+            return response()->json(["msg"=>"Произошла ошибка при сохранении"], 500);
+        }
+    }
+
+    public function create(Request $request)
+    {
+        $data = $request->all();
+
+        try {
+            $exr = new Heater();
+            $exr->type = $data['type'];
+            $exr->power = $data['power'];
+            $exr->effective_heating_area = $data['effective_heating_area'];
+            $exr->efficiency = $data['efficiency'];
+            $exr->save();
+            return response()->json(["msg"=>"good"]);
+        } catch (\Throwable $th) {
+            return response()->json(["msg"=>"Произошла ошибка при сохранении"], 500);
+        }
+    }
+
+    public function delete(Request $request, Heater $exr)
+    {
+        $exr->delete();
+    }
+
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Heater  $heater
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Heater $heater)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Heater  $heater
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Heater $heater)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Heater  $heater
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Heater $heater)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Heater  $heater
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Heater $heater)
-    {
-        //
+        return view('heater');
     }
 }

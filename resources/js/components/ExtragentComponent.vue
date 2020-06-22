@@ -10,12 +10,12 @@
                         <thead>
                             <tr>
                                 <th scope="col">Название</th>
-                                <th scope="col">Объем</th>
-                                <th scope="col">Темепература парообразования</th>
-                                <th scope="col">Температура конденциации</th>
-                                <th scope="col">Вязкость</th>
-                                <th scope="col">Плотность</th>
-                                <th scope="col">Молекулярная масса пара</th>
+                                <th scope="col">Объем, л</th>
+                                <th scope="col">Темепература парообразования, °C </th>
+                                <th scope="col">Температура конденсации, °C</th>
+                                <th scope="col">Вязкость, мПа * с</th>
+                                <th scope="col">Плотность, г/см³ </th>
+                                <th scope="col">Молекулярная масса пара, г/моль</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,32 +37,32 @@
                                 <b-form-input id="input-1" v-model="extragent.name" type="text" required ></b-form-input>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Объем:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Объем, Л:" label-for="input-2">
                                 <b-form-input id="input-2" v-validate="'decimal:3'" name="Объем" data-vv-name="Объем" v-model="extragent.V" required></b-form-input>
                                 <span>{{ errors.first('Объем') }}</span>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Темепература парообразования:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Температура парообразования, °C:" label-for="input-2">
                                 <b-form-input id="input-2" v-validate="'decimal:3'" name="Темепература парообразования" data-vv-name="Темепература парообразования" v-model="extragent.T_vaporization" required></b-form-input>
                                 <span>{{ errors.first('Темепература парообразования') }}</span>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Температура конденциации:" label-for="input-2">
-                                <b-form-input id="input-2" v-validate="'decimal:3'" name="Температура конденциации" data-vv-name="Температура конденциации" v-model="extragent.T_condinsasion" required></b-form-input>
-                                <span>{{ errors.first('Температура конденциации') }}</span>
+                            <b-form-group id="input-group-2" label="Температура конденсации, °C:" label-for="input-2">
+                                <b-form-input id="input-2" v-validate="'decimal:3'" name="Температура конденсации" data-vv-name="Температура конденсации" v-model="extragent.T_condinsasion" required></b-form-input>
+                                <span>{{ errors.first('Температура конденсации') }}</span>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Вязкость:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Вязкость, мПа * c:" label-for="input-2">
                                 <b-form-input id="input-2" v-validate="'decimal:3'" name="Вязкость" data-vv-name="Вязкость" v-model="extragent.viscosity" required></b-form-input>
                                 <span>{{ errors.first('Вязкость') }}</span>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Плотность:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Плотность, г/см³ :" label-for="input-2">
                                 <b-form-input id="input-2" v-validate="'decimal:3'" name="Плотность" data-vv-name="Плотность" v-model="extragent.density" required></b-form-input>
                                 <span>{{ errors.first('Плотность') }}</span>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Молекулярная масса пара:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Молекулярная масса пара, г/моль:" label-for="input-2">
                                 <b-form-input id="input-2" v-validate="'decimal:3'" name="Молекулярная масса пара" data-vv-name="Молекулярная масса пара" v-model="extragent.molecular_mass_vap" required></b-form-input>
                                 <span>{{ errors.first('Молекулярная масса пара') }}</span>
                             </b-form-group>

@@ -29,10 +29,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/extragent', 'ExtragentController@index')->name('extragent');
+Route::get('/extractor', 'ExtractorController@index')->name('extractor');
+Route::get('/heater', 'HeaterController@index')->name('heater');
 Route::get('/characts', 'CharactController@index')->name('characts');
+Route::get('/source', 'SourceController@index')->name('source');
 Route::get('/passport', 'PassportController@index')->name('passport');
 Route::get('/coolant', 'CoolantController@index')->name('coolant');
 Route::get('/detail', 'DetailController@index')->name('detail');
+Route::get('/extractor-details', 'ExtractorDetailController@index')->name('extractor-details');
 
 
 

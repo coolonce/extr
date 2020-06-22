@@ -87,19 +87,22 @@
                 {{-- Загрузка изображения TODO --}}
             </li>
             <li class="nav-item">
-                {{-- <a class="nav-link" href="#">Экстракторы</a> --}}
+                <a class="nav-link" href="/extractor">Экстракторы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/extractor-details">Детали экстрактора</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/extragent">Экстрагенты</a>
             </li>
             <li class="nav-item">
-                {{-- <a class="nav-link" href="#">Нагреватель</a> --}}
+                <a class="nav-link" href="/heater">Нагреватель</a>
             </li>
             <li class="nav-item">
                 {{-- <a class="nav-link" href="#">Процессы</a> --}}
             </li>
             <li class="nav-item">
-                {{-- <a class="nav-link" href="#">Сырье</a> изи--}}
+                <a class="nav-link" href="/source">Сырье</a>
             </li>
         </ul>
         @endif

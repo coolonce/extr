@@ -13,8 +13,8 @@
                                 <th scope="col">Тип детали</th>
                                 <th scope="col">Ссылка</th>
                                 <th scope="col">Шлиф</th>
-                                <th scope="col">Диаметр</th>
-                                <th scope="col">Объем</th>
+                                <th scope="col">Диаметр, мм</th>
+                                <th scope="col">Объем, л </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,7 +36,7 @@
                     <div v-if="!showTable" class="col-md-6 offset-3">
                         <b-form  @submit.prevent="create()" offset="3" data-vv-name="form-main">
                             <b-form-group id="input-group-2" label="Название:" label-for="input-2">
-                                <b-form-input id="input-2"  name="Название" data-vv-name="ЗнНазвание" v-model="detail.name" required></b-form-input>
+                                <b-form-input id="input-2"  name="Название" data-vv-name="Название" v-model="detail.name" required></b-form-input>
                                 <!-- <span>{{ errors.first('Значение Характеристики') }}</span> -->
                             </b-form-group>
 
@@ -48,15 +48,15 @@
                                 <b-form-input id="input-2"  name="Ссылка" data-vv-name="Ссылка" v-model="detail.link" required></b-form-input>
                             </b-form-group>
                             <b-form-group id="input-group-2" label="Шлиф:" label-for="input-2">
-                                <b-form-input id="input-2"  name="Шлиф" v-validate="'decimal:3'" data-vv-name="Шлиф" v-model="detail.thin_section" required></b-form-input>
+                                <b-form-input id="input-2"  name="Шлиф" data-vv-name="Шлиф" v-model="detail.thin_section" required></b-form-input>
                                 <span>{{ errors.first('Шлиф') }}</span>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Диаметр:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Диаметр, мм:" label-for="input-2">
                                 <b-form-input id="input-2"  name="Диаметр"  data-vv-name="Диаметр" v-model="detail.diameter"></b-form-input>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Объем:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Объем, л:" label-for="input-2">
                                 <b-form-input id="input-2"  name="Объем"  data-vv-name="Объем" v-model="detail.volume"></b-form-input>
                             </b-form-group>
                             <div >
@@ -192,7 +192,7 @@ export default {
             axios.post(`/api/detail/${this.detail.id}/edit/`, this.detail)
                 .then(resp =>{
                     console.log(resp);
-                    alert("Характеристика изменена!")
+                    alert("Деталь изменена!")
                 },
                 err => {
                     alert(err.data.msg);
@@ -215,7 +215,7 @@ export default {
                 .then(
                 (resp) =>{
                     console.log(resp);
-                    alert("Характеристика добавлена!");
+                    alert("Деталь добавлена!");
                     this.getData();
                     this.showTable = true;
                     this.createObj = false;
@@ -234,7 +234,7 @@ export default {
                 .then(
                 (resp) =>{
                     console.log(resp);
-                    alert("Характеристика удалена!");
+                    alert("Деталь удалена!");
                     this.getData();
                     this.showTable = true;
                     this.createObj = false;

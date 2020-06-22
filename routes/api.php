@@ -65,19 +65,42 @@ Route::prefix('charact')->group(function () {
     Route::post('/create', 'CharactController@create');
 });
 
+Route::prefix('extractor')->group(function () {
+    Route::get('/', 'ExtractorController@get');
+    Route::post('/{exr}/edit', 'ExtractorController@update');
+    Route::post('/{exr}/delete', 'ExtractorController@delete');
+    Route::post('/create', 'ExtractorController@create');
+});
+
 Route::prefix('extragent')->group(function () {
     Route::get('/', 'ExtragentController@get');
     Route::post('/{exr}/edit', 'ExtragentController@update');
     Route::post('/{exr}/delete', 'ExtragentController@delete');
     Route::post('/create', 'ExtragentController@create');
 });
+
 Route::prefix('heater')->group(function () {
     Route::get('/', 'HeaterController@get');
+    Route::post('/{exr}/edit', 'HeaterController@update');
+    Route::post('/{exr}/delete', 'HeaterController@delete');
+    Route::post('/create', 'HeaterController@create');
 });
 
 Route::prefix('source')->group(function () {
     Route::get('/', 'SourceController@get');
+    Route::post('/{exr}/edit', 'SourceController@update');
+    Route::post('/{exr}/delete', 'SourceController@delete');
+    Route::post('/create', 'SourceController@create');
 });
+
+Route::prefix('extractor-details')->group(function () {
+    Route::get('/', 'ExtractorDetailController@get');
+    Route::post('/{exr}/edit', 'ExtractorDetailController@update');
+    Route::post('/{exr}/delete', 'ExtractorDetailController@delete');
+    Route::post('/create', 'ExtractorDetailController@create');
+});
+
+
 Route::prefix('coolant')->group(function () {
     Route::get('/', 'CoolantController@get');
     Route::post('/{exr}/edit', 'CoolantController@update');

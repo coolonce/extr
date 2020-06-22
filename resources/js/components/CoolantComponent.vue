@@ -10,9 +10,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">Название хладагента</th>
-                                <th scope="col">Начальная вязкость хладагента</th>
-                                <th scope="col">Начальная плотность хладагента</th>
-                                <th scope="col">Удельная теплоемкость</th>
+                                <th scope="col">Начальная вязкость хладагента, мПа * с</th>
+                                <th scope="col">Начальная плотность хладагента, г/см³</th>
+                                <th scope="col">Удельная теплоемкость, Дж/(кг·К)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,17 +31,17 @@
                                 <b-form-input id="input-1" v-model="coolant.name" type="text" required ></b-form-input>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Начальная вязкость хладагента:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Начальная вязкость хладагента, мПа * с:" label-for="input-2">
                                 <b-form-input id="input-2" v-validate="'decimal:3'" name="Начальная вязкость хладагента" data-vv-name="Начальная вязкость хладагента" v-model="coolant.start_viscosity" required></b-form-input>
                                 <span>{{ errors.first('Начальная вязкость хладагента') }}</span>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Начальная плотность хладагента:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Начальная плотность хладагента, г/см³:" label-for="input-2">
                                 <b-form-input id="input-2" v-validate="'decimal:3'" name="Начальная плотность хладагента" data-vv-name="Начальная плотность хладагента" v-model="coolant.start_density" required></b-form-input>
                                 <span>{{ errors.first('Начальная плотность хладагента') }}</span>
                             </b-form-group>
 
-                            <b-form-group id="input-group-2" label="Удельная теплоемкость:" label-for="input-2">
+                            <b-form-group id="input-group-2" label="Удельная теплоемкость, Дж/(кг·К):" label-for="input-2">
                                 <b-form-input id="input-2" v-validate="'decimal:3'" name="Удельная теплоемкость" data-vv-name="Удельная теплоемкость" v-model="coolant.c" required></b-form-input>
                                 <span>{{ errors.first('Удельная теплоемкость') }}</span>
                             </b-form-group>
@@ -104,7 +104,7 @@ export default {
             axios.post(`/api/coolant/${this.coolant.id}/edit/`, this.coolant)
                 .then(resp =>{
                     console.log(resp);
-                    alert("Экстрагент изменен!")
+                    alert("Охладитель изменен!")
                 },
                 err => {
                     alert(err.data.msg);
@@ -126,7 +126,7 @@ export default {
                 .then(
                 (resp) =>{
                     console.log(resp);
-                    alert("Экстрагент добавлен!");
+                    alert("Охладитель добавлен!");
                     this.getData();
                     this.showTable = true;
                     this.createObj = false;
@@ -145,7 +145,7 @@ export default {
                 .then(
                 (resp) =>{
                     console.log(resp);
-                    alert("Экстрагент удален!");
+                    alert("Охладитель удален!");
                     this.getData();
                     this.showTable = true;
                     this.createObj = false;

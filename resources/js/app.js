@@ -32,7 +32,11 @@ Vue.use(IconsPlugin)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('source-component', require('./components/SourceComponent.vue').default);
+Vue.component('extractor-detail-component', require('./components/ExtractorDetailComponent.vue').default);
 Vue.component('extragent-component', require('./components/ExtragentComponent.vue').default);
+Vue.component('extractor-component', require('./components/ExtractorComponent.vue').default);
+Vue.component('heater-component', require('./components/HeaterComponent.vue').default);
 Vue.component('characts-component', require('./components/CharactsComponent.vue').default);
 Vue.component('passport-component', require('./components/PassportComponent.vue').default);
 Vue.component('coolant-component', require('./components/CoolantComponent.vue').default);

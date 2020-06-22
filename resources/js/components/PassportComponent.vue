@@ -38,8 +38,8 @@
                             </b-form-group>
 
                             <b-form-group id="input-group-2" label="Значение Характеристики:" label-for="input-2">
-                                <b-form-input id="input-2"  name="Значение Характеристики" data-vv-name="Значение Характеристики" v-model="passport.cvalue" required></b-form-input>
-                                <!-- <span>{{ errors.first('Значение Характеристики') }}</span> -->
+                                <b-form-input id="input-2" v-validate="'decimal:3'"  name="Значение Характеристики" data-vv-name="Значение Характеристики" v-model="passport.cvalue" required></b-form-input>
+                                <span>{{ errors.first('Значение Характеристики') }}</span>
                             </b-form-group>
                             <div >
                                 <b-button type="submit" class="col-3 mr-2" variant="primary" @click.prevent="onSubmit()" v-if="!createObj">Изменить</b-button>
@@ -153,7 +153,7 @@ export default {
             axios.post(`/api/passport/${this.passport.id}/edit/`, this.passport)
                 .then(resp =>{
                     console.log(resp);
-                    alert("Характеристика изменена!")
+                    alert("Паспорт детали изменен!")
                 },
                 err => {
                     alert(err.data.msg);
@@ -176,7 +176,7 @@ export default {
                 .then(
                 (resp) =>{
                     console.log(resp);
-                    alert("Характеристика добавлена!");
+                    alert("Паспорт детали добавлен!");
                     this.getData();
                     this.showTable = true;
                     this.createObj = false;
@@ -195,7 +195,7 @@ export default {
                 .then(
                 (resp) =>{
                     console.log(resp);
-                    alert("Характеристика удалена!");
+                    alert("Паспорт детали удален!");
                     this.getData();
                     this.showTable = true;
                     this.createObj = false;

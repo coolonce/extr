@@ -31,16 +31,16 @@ class PassportController extends Controller
     {
         $data = $request->all();
 
-        try {
+        // try {
             $exr = new Passport();
             $exr->ch_id = $data['ch_id'];
             $exr->det_id = $data['det_id'];
             $exr->cvalue = $data['cvalue'];
             $exr->save();
             return response()->json(["msg"=>"good"]);
-        } catch (\Throwable $th) {
-            return response()->json(["msg"=>"Произошла ошибка при сохранении"], 500);
-        }
+        // } catch (\Throwable $th) {
+        //     return response()->json(["msg"=>"Произошла ошибка при сохранении"], 500);
+        // }
     }
 
     public function delete(Request $request, Passport $exr)

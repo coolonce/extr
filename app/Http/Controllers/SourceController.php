@@ -7,85 +7,53 @@ use Illuminate\Http\Request;
 
 class SourceController extends Controller
 {
-
     public function get(Request $request)
     {
         return response()->json(["data" => Source::all()]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function update(Request $request, Source $exr)
+    {
+        $data = $request->all();
+
+        try {
+            $exr->name = $data['name'];
+            $exr->percents = $data['percents'];
+            $exr->mass = $data['mass'];
+            $exr->average_radius = $data['average_radius'];
+            $exr->layer_porosity = $data['layer_porosity'];
+            $exr->save();
+            return response()->json(["msg"=>"good"]);
+        } catch (\Throwable $th) {
+            return response()->json(["msg"=>"Произошла ошибка при сохранении"], 500);
+        }
+    }
+
+    public function create(Request $request)
+    {
+        $data = $request->all();
+
+        try {
+            $exr = new Source();
+            $exr->name = $data['name'];
+            $exr->percents = $data['percents'];
+            $exr->mass = $data['mass'];
+            $exr->average_radius = $data['average_radius'];
+            $exr->layer_porosity = $data['layer_porosity'];
+            $exr->save();
+            return response()->json(["msg"=>"good"]);
+        } catch (\Throwable $th) {
+            return response()->json(["msg"=>"Произошла ошибка при сохранении"], 500);
+        }
+    }
+
+    public function delete(Request $request, Source $exr)
+    {
+        $exr->delete();
+    }
+
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Source  $source
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Source $source)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Source  $source
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Source $source)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Source  $source
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Source $source)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Source  $source
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Source $source)
-    {
-        //
+        return view('source');
     }
 }
